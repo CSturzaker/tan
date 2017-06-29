@@ -1,6 +1,6 @@
 {
-  "name": "tan",
-  "version": "0.3.1",
+  "name": "ThinkAgainNow",
+  "version": "0.4.0",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
