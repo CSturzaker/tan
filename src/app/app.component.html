@@ -1,24 +1,16 @@
 <clr-main-container>
-  <clr-header>
+  <header class="header-6">
     <div class="branding">
       <a [routerLink]="['/home']">
         <img class="tan-logo" src="../assets/think-again-now.png"/>
       </a>
     </div>
-  </clr-header>
-  <nav class="sub-nav" [clr-nav-level]="1">
-    <ul class="nav">
-      <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/home']" routerLinkActive="active">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/mythbusters']" routerLinkActive="active">Myth busters</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/talktoyourchildren']" routerLinkActive="active">Ways to talk to your child</a>
-      </li>
-    </ul>
-  </nav>
+    <div class="header-actions flex-items-xs-middle" [clr-nav-level]="1">
+      <a class="nav-link nav-text" [routerLink]="['/home']" routerLinkActive="active">Home</a>
+      <a class="nav-link nav-text" [routerLink]="['/mythbusters']" routerLinkActive="active">Myth busters</a>
+      <a class="nav-link nav-text" [routerLink]="['/talktoyourchildren']" routerLinkActive="active">Ways to talk to your child</a>
+    </div>
+  </header>
   <div class="content-container">
     <div class="content-area">
       <router-outlet></router-outlet>
