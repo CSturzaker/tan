@@ -2,12 +2,13 @@
 @tan-red:#ed1c24;
 @base-url: "http://localhost:4200";
 
-.main-container .header{
+.main-container header.header-6{
+  background-color:@backgroundcolour;
   flex-basis: 86px;
-}
-
-.header{
   height: 86px;
+  border-bottom-color: #fff;
+  border-bottom-style: solid;
+  border-bottom-width: thin;
   .branding {
     height: 86px;
     a {
@@ -15,26 +16,40 @@
     }
   }
 }
+.header-actions {
+  flex-basis: 86px;
+  height: 86px;
+}
+
+// .header{
+//   height: 86px;
+//   .branding {
+//     height: 86px;
+//     a {
+//       height: 86px;
+//     }
+//   }
+// }
 
 .tan-logo {
   width:120px;
 }
 
-.nav-link {
-  color: @tan-red;
+// .nav-link {
+//   color: @tan-red;
 
-  &:hover,
-  &.active {
-    color: @tan-red;
-    box-shadow: 0 -3px 0 @tan-red inset;
-    transition: box-shadow 0.2s ease-in;
-    outline: 0;
-  }
-}
+//   &:hover,
+//   &.active {
+//     color: @tan-red;
+//     box-shadow: 0 -3px 0 @tan-red inset;
+//     transition: box-shadow 0.2s ease-in;
+//     outline: 0;
+//   }
+// }
 
-.sub-nav {
-  background-color: @backgroundcolour;
-}
+// .sub-nav {
+//   background-color: @backgroundcolour;
+// }
 
 .content-container {
   background-color:@backgroundcolour;
