@@ -1,8 +1,27 @@
-<!--The whole content below can be removed with the new code.-->
-<div style="text-align:center">
-  <h1>
-    {{title}} - coming soon..
-  </h1>
-</div>
-
-
+<clr-main-container>
+  <clr-header>
+    <div class="branding">
+      <a [routerLink]="['/home']">
+        <img class="tan-logo" src="../assets/think-again-now.png"/>
+      </a>
+    </div>
+  </clr-header>
+  <nav class="sub-nav" [clr-nav-level]="1">
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/home']" routerLinkActive="active">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/mythbusters']" routerLinkActive="active">Myth busters</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/talktoyourchildren']" routerLinkActive="active">Ways to talk to your child</a>
+      </li>
+    </ul>
+  </nav>
+  <div class="content-container">
+    <div class="content-area">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</clr-main-container>
