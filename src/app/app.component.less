@@ -1,0 +1,40 @@
+@backgroundcolour: #313131;
+@tan-red:#ed1c24;
+@base-url: "http://localhost:4200";
+
+.main-container .header{
+  flex-basis: 90px;
+}
+
+.header{
+  height: 90px;
+  .branding {
+    height: 90px;
+    a {
+      height: 90px;
+    }
+  }
+}
+
+.tan-logo {
+  width:120px;
+}
+
+.nav-link {
+  color: @tan-red;
+
+  &:hover {
+    color: @tan-red;
+    box-shadow: 0 -3px 0 @tan-red inset;
+    transition: box-shadow 0.2s ease-in;
+    outline: 0;
+  }
+}
+
+.sub-nav {
+  background-color: @backgroundcolour;
+}
+
+.content-container {
+  background-color:@backgroundcolour;
+}

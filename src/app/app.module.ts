@@ -1,8 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FlexLayoutModule } from '@angular/flex-layout';
+import { ClarityModule } from 'clarity-angular';
 
 import { AppComponent } from './app.component';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
@@ -10,7 +11,8 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    FlexLayoutModule
+    CoreModule,
+    ClarityModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
