@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
 
 @Component({
-  selector: 'tan-drinking-chart',
-  templateUrl: './drinking-chart.component.html',
-  styleUrls: ['./drinking-chart.component.less']
+  selector: 'tan-feeling-chart',
+  templateUrl: './feeling-chart.component.html',
+  styleUrls: ['./feeling-chart.component.less']
 })
-export class DrinkingChartComponent implements OnInit {
+export class FeelingChartComponent implements OnInit {
   public ctx: any;
   public chart: any;
   public labels: Array<any>;
@@ -17,25 +17,32 @@ export class DrinkingChartComponent implements OnInit {
   ngOnInit() {
     this.labels = [
       // tslint:disable-next-line:quotemark
-      ["Respondents whose", "parent \"don\'t mind them ", "drinking alcohol as long as", "I don\'t drink too much\""],
+      ["They don\'t know I drink"],
+      ['They let me drink as much', 'as I like'],
       // tslint:disable-next-line:quotemark
-      ["Respondents whose", "parent don't like me", "drinking alcohol at all\""]
+      ["They don\'t mind as", "long as I don\'t drink too much"],
+      // tslint:disable-next-line:quotemark
+      ["They don\'t like me drinking", "alcohol at all"]
     ]
-    this.ctx = document.getElementById('drinkingChart');
+    this.ctx = document.getElementById('feelingChart');
     this.chart = new Chart(this.ctx, {
       type: 'horizontalBar',
       data: {
         labels: this.labels,
         datasets: [{
-          label: 'How often do you drink alcohol?',
-          data: [79, 5],
+          label: 'How do your parents feel about you drinking alcohol?',
+          data: [10, 5, 67, 18],
           backgroundColor: [
+            'rgba(237, 28, 36, 0.6)',
+            'rgba(237, 28, 36, 0.6)',
             'rgba(237, 28, 36, 0.6)',
             'rgba(237, 28, 36, 0.6)'
           ],
           borderColor: [
             'rgba(237, 28, 36, 1)',
             'rgba(237, 28, 36, 1)',
+            'rgba(237, 28, 36, 1)',
+            'rgba(237, 28, 36, 1)'
           ],
           borderWidth: 1
         }]
@@ -44,7 +51,7 @@ export class DrinkingChartComponent implements OnInit {
         responsive: true,
         title: {
           fontColor: '#fff',
-          text: 'How often do you drink alcohol?'
+          text: 'How do your parents feel about you drinking alcohol?'
         },
         legend: {
           display: false
