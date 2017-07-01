@@ -9,36 +9,72 @@ import { Chart } from 'chart.js';
 export class DrinkingChartComponent implements OnInit {
   public ctx: any;
   public chart: any;
+  public labels: Array<any>;
+
   constructor() { }
 
-  ngOnInit() {
 
+  ngOnInit() {
+    this.labels = [
+      // tslint:disable-next-line:quotemark
+      ["Respondents whose parents", "\"don\'t mind them drinking alcohol", "as long as I don\'t drink too much\""],
+      // tslint:disable-next-line:quotemark
+      ["Respondents whose parents", "don't like me drinking alcohol at all\""]
+    ]
     this.ctx = document.getElementById('drinkingChart');
     this.chart = new Chart(this.ctx, {
-      type: 'bar',
+      type: 'horizontalBar',
       data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        labels: this.labels,
         datasets: [{
-          label: '# of Votes',
-          data: [12, 19, 3, 5, 2, 3],
+          label: 'How often do you drink alcohol?',
+          data: [79, 5],
           backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(153, 102, 255, 0.2)',
-            'rgba(255, 159, 64, 0.2)'
+            'rgba(237, 28, 36, 0.6)',
+            'rgba(237, 28, 36, 0.6)'
           ],
           borderColor: [
-            'rgba(255,99,132,1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 206, 86, 1)',
-            'rgba(75, 192, 192, 1)',
-            'rgba(153, 102, 255, 1)',
-            'rgba(255, 159, 64, 1)'
+            'rgba(237, 28, 36, 1)',
+            'rgba(237, 28, 36, 1)',
           ],
           borderWidth: 1
         }]
+      },
+      options: {
+        responsive: true,
+        title: {
+          fontColor: '#fff',
+          text: 'How often do you drink alcohol?'
+        },
+        legend: {
+          display: false
+        },
+        scales: {
+          xAxes: [{
+            gridLines: {
+              drawBorder: false,
+              color: '#ed1c24',
+              display: true,
+              zeroLineColor: '#ed1c24'
+            },
+            ticks: {
+              min: 0,
+              max: 100,
+              fontColor: '#fff'
+            },
+
+          }],
+          yAxes: [{
+            type: 'category',
+            gridLines: {
+              display: false,
+              drawBorder: false
+            },
+            ticks: {
+              fontColor: '#fff'
+            }
+          }]
+        }
       }
     });
   }
