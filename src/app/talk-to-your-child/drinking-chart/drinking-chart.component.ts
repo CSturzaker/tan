@@ -42,9 +42,19 @@ export class DrinkingChartComponent implements OnInit {
       },
       options: {
         responsive: true,
+        tooltips: {
+            enabled: true,
+            mode: 'single',
+            callbacks: {
+                label: function(tooltipItems, data) {
+                    return tooltipItems.xLabel + '%';
+                }
+            }
+        },
         title: {
-          fontColor: '#fff',
-          text: 'How often do you drink alcohol?'
+            display: true,
+            fontColor: '#fff',
+            text: 'How often do you drink alcohol?'
         },
         legend: {
           display: false
@@ -60,7 +70,10 @@ export class DrinkingChartComponent implements OnInit {
             ticks: {
               min: 0,
               max: 100,
-              fontColor: '#fff'
+              fontColor: '#fff',
+              callback: function(label, index, labels) {
+                  return label + '%';
+              }
             },
 
           }],
