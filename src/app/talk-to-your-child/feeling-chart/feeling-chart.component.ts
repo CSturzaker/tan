@@ -49,8 +49,19 @@ export class FeelingChartComponent implements OnInit {
       },
       options: {
         responsive: true,
+        tooltips: {
+            enabled: true,
+            mode: 'single',
+            callbacks: {
+                label: function(tooltipItems, data) {
+                    console.log(tooltipItems);
+                    return tooltipItems.xLabel + '%';
+                }
+            }
+        },
         title: {
           fontColor: '#fff',
+          display: true,
           text: 'How do your parents feel about you drinking alcohol?'
         },
         legend: {
@@ -67,7 +78,10 @@ export class FeelingChartComponent implements OnInit {
             ticks: {
               min: 0,
               max: 100,
-              fontColor: '#fff'
+              fontColor: '#fff',
+              callback: function(label, index, labels) {
+                  return label + '%';
+              }
             },
 
           }],
