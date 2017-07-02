@@ -2,7 +2,7 @@
 @tan-red:#ed1c24;
 @base-url: "http://localhost:4200";
 
-.main-container header.header-6{
+.main-container clr-header.header-6{
   background-color:@backgroundcolour;
   flex-basis: 86px;
   height: 86px;
@@ -16,7 +16,7 @@
     }
   }
 }
-.header-actions {
+.header-nav {
   flex-basis: 86px;
   height: 86px;
 }
@@ -53,4 +53,10 @@
 
 .content-container {
   background-color:@backgroundcolour;
+}
+
+@media screen and (max-width: 768px) {
+  .main-container .header-nav.clr-nav-level-1{
+    background-color:@backgroundcolour;
+  }
 }
