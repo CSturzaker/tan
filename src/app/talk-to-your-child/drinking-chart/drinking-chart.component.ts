@@ -91,4 +91,46 @@ export class DrinkingChartComponent implements OnInit {
       }
     });
   }
+
+
+// var chart = c3.generate({
+//     padding: {
+//         right: 50
+//     },
+
+//     size: {
+//         height: 240,
+//         width: 480
+//     },
+//     grid: {
+//         x: {
+//             show: false
+//         },
+//         y: {
+//             show: true
+//         }
+//     },
+//     data: {
+//         columns: [
+//             ['data1', 79, 5]
+//         ],
+//         types: {
+//             data1: 'bar',
+//         }
+//     },
+//     axis: {
+//         rotated: true,
+//         x: {
+//             categories: ['Respondents whose \"parent don\'t mind them drinking alcohol as long as I dont drink too much\"',
+//             'Respondents whose \"parent don\'t like me drinking alcohol at all\"'],
+//             type: 'categorized',
+//           },
+//        y: {
+//            max: 90
+//        }
+//     }
+
+// });
+
+
 }
