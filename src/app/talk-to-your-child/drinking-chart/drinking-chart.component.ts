@@ -25,6 +25,12 @@ export class DrinkingChartComponent implements OnInit {
           show: true
         }
       },
+      bar: {
+        width: 50
+      },
+      legend: {
+        show: false
+      },
       data: {
         columns: [
           ['data1', 79, 5]
@@ -33,18 +39,26 @@ export class DrinkingChartComponent implements OnInit {
           data1: 'bar',
         }
       },
+      color: {
+        pattern: [
+          '#ed1c24', '#ed1c24'
+        ]
+      },
       axis: {
         rotated: true,
         x: {
           categories: ['Respondents whose \"parent don\'t mind them drinking alcohol as long as I dont drink too much\"',
             'Respondents whose \"parent don\'t like me drinking alcohol at all\"'],
-          type: 'categorized',
+          type: 'categorized'
         },
         y: {
-          max: 90
+          min: 10,
+          max: 90,
+          tick: {
+            format: function (d) { return d + '%' }
+          }
         }
       }
-
     });
   }
 }
