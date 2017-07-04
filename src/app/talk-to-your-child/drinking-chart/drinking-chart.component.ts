@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import * as c3 from 'c3'
 
+import { ScreenService } from '../../shared/screen.service';
+
 @Component({
   selector: 'tan-drinking-chart',
   templateUrl: './drinking-chart.component.html',
@@ -10,13 +12,25 @@ export class DrinkingChartComponent implements OnInit {
   public ctx: any;
   public chart: any;
   public labels: Array<any>;
+  public yAxisValues: Array<number>;
+  public yAxisPadding: any;
 
-  constructor() { }
+  constructor(private screenService: ScreenService) { }
 
   ngOnInit() {
+    if (!this.screenService.isLarge()) {
+      this.yAxisValues = [0, 25, 50, 75, 100];
+      this.yAxisPadding = { top: 50, bottom: 0 };
+    } else {
+      this.yAxisValues = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
+      this.yAxisPadding = { top: 120, bottom: 0 };
+    }
     this.ctx = document.getElementById('drinkingChart');
     this.chart = c3.generate({
       bindto: this.ctx,
+      tooltip: {
+          show: false
+      },
       grid: {
         x: {
           show: false
@@ -52,13 +66,13 @@ export class DrinkingChartComponent implements OnInit {
           type: 'categorized'
         },
         y: {
-          min: 10,
-          max: 90,
+          padding: this.yAxisPadding,
           tick: {
+            values: this.yAxisValues,
             format: function (d) { return d + '%' }
           }
         }
       }
     });
-  }
+}
 }
