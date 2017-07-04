@@ -51,7 +51,8 @@ export class DrinkingChartComponent implements OnInit {
         ],
         types: {
           data1: 'bar',
-        }
+        },
+        labels: true
       },
       color: {
         pattern: [
