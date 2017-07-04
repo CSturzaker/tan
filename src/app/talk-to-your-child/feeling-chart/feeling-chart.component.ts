@@ -24,7 +24,7 @@ export class FeelingChartComponent implements OnInit {
       this.yAxisPadding = { top: 50, bottom: 0 };
     } else {
       this.yAxisValues = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
-      this.yAxisPadding = { top: 50, bottom: 0 };
+      this.yAxisPadding = { top: 60, bottom: 0 };
     }
     this.ctx = document.getElementById('feelingChart');
     this.chart = c3.generate({
@@ -52,7 +52,8 @@ export class FeelingChartComponent implements OnInit {
         ],
         types: {
           data1: 'bar',
-        }
+        },
+        labels: true
       },
       color: {
         pattern: [
