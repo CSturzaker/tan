@@ -1,6 +1,6 @@
 {
   "name": "ThinkAgainNow",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -26,6 +26,7 @@
     "@angular/platform-browser-dynamic": "^4.0.0",
     "@angular/router": "^4.0.0",
     "@webcomponents/custom-elements": "^1.0.0-alpha.3",
+    "c3": "^0.4.14",
     "chart.js": "^2.3.0",
     "clarity-angular": "^0.9.11",
     "clarity-icons": "^0.9.11",
@@ -39,10 +40,11 @@
   },
   "devDependencies": {
     "@angular/language-service": "^4.0.0",
+    "@types/c3": "^0.4.43",
+    "@types/chart.js": "^2.4.6",
     "@types/google.analytics": "0.0.33",
     "@types/jasmine": "2.5.45",
     "@types/node": "~6.0.60",
-    "@types/chart.js": "^2.4.6",
     "codelyzer": "~3.0.1",
     "jasmine-core": "~2.6.2",
     "jasmine-spec-reporter": "~4.1.0",

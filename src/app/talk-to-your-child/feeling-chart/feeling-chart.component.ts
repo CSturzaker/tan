@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Chart } from 'chart.js';
+import * as c3 from 'c3'
+
+import { ScreenService } from '../../shared/screen.service';
 
 @Component({
   selector: 'tan-feeling-chart',
@@ -10,91 +12,66 @@ export class FeelingChartComponent implements OnInit {
   public ctx: any;
   public chart: any;
   public labels: Array<any>;
+  public yAxisValues: Array<number>;
+  public yAxisPadding: any;
 
-  constructor() { }
+  constructor(private screenService: ScreenService) { }
 
 
   ngOnInit() {
-    this.labels = [
-      // tslint:disable-next-line:quotemark
-      ["They don\'t know I drink"],
-      ['They let me drink as much', 'as I like'],
-      // tslint:disable-next-line:quotemark
-      ["They don\'t mind as", "long as I don\'t drink too much"],
-      // tslint:disable-next-line:quotemark
-      ["They don\'t like me drinking", "alcohol at all"]
-    ]
+    if (!this.screenService.isLarge()) {
+      this.yAxisValues = [0, 25, 50, 75];
+      this.yAxisPadding = { top: 50, bottom: 0 };
+    } else {
+      this.yAxisValues = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
+      this.yAxisPadding = { top: 50, bottom: 0 };
+    }
     this.ctx = document.getElementById('feelingChart');
-    this.chart = new Chart(this.ctx, {
-      type: 'horizontalBar',
-      data: {
-        labels: this.labels,
-        datasets: [{
-          label: 'How do your parents feel about you drinking alcohol?',
-          data: [10, 5, 67, 18],
-          backgroundColor: [
-            'rgba(237, 28, 36, 0.6)',
-            'rgba(237, 28, 36, 0.6)',
-            'rgba(237, 28, 36, 0.6)',
-            'rgba(237, 28, 36, 0.6)'
-          ],
-          borderColor: [
-            'rgba(237, 28, 36, 1)',
-            'rgba(237, 28, 36, 1)',
-            'rgba(237, 28, 36, 1)',
-            'rgba(237, 28, 36, 1)'
-          ],
-          borderWidth: 1
-        }]
+    this.chart = c3.generate({
+      bindto: this.ctx,
+      tooltip: {
+        show: false
       },
-      options: {
-        responsive: true,
-        tooltips: {
-            enabled: true,
-            mode: 'single',
-            callbacks: {
-                label: function(tooltipItems, data) {
-                    console.log(tooltipItems);
-                    return tooltipItems.xLabel + '%';
-                }
-            }
+      grid: {
+        x: {
+          show: false
         },
-        title: {
-          fontColor: '#fff',
-          display: true,
-          text: 'How do your parents feel about you drinking alcohol?'
+        y: {
+          show: true
+        }
+      },
+      bar: {
+        width: 50
+      },
+      legend: {
+        show: false
+      },
+      data: {
+        columns: [
+          ['data1', 10, 5, 67, 18]
+        ],
+        types: {
+          data1: 'bar',
+        }
+      },
+      color: {
+        pattern: [
+          '#ed1c24', '#ed1c24'
+        ]
+      },
+      axis: {
+        rotated: true,
+        x: {
+          categories: ['They don\'t know I drink', 'They let me drink as much as I like',
+                      'They don\'t mind as long as I don\'t drink too much', 'They don\'t like me drinking alcohol at all'],
+          type: 'categorized'
         },
-        legend: {
-          display: false
-        },
-        scales: {
-          xAxes: [{
-            gridLines: {
-              drawBorder: false,
-              color: '#ed1c24',
-              display: true,
-              zeroLineColor: '#ed1c24'
-            },
-            ticks: {
-              min: 0,
-              max: 100,
-              fontColor: '#fff',
-              callback: function(label, index, labels) {
-                  return label + '%';
-              }
-            },
-
-          }],
-          yAxes: [{
-            type: 'category',
-            gridLines: {
-              display: false,
-              drawBorder: false
-            },
-            ticks: {
-              fontColor: '#fff'
-            }
-          }]
+        y: {
+          padding: this.yAxisPadding,
+          tick: {
+            values: this.yAxisValues,
+            format: function (d) { return d + '%' }
+          }
         }
       }
     });
